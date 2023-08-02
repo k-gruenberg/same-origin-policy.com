@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>postMessage partner</title>
+	</head>
+	<body>
+		This is: <span id="window_location"></span><script>window_location.innerText = window.location;</script><br/>
+		postMessage partner here.<br/>
+		<br/>
+		Send message: <input type="text" id="send_message" /><input type="button" value="Post message!" onclick="
+			top.postMessage(send_message.value, '*')
+		" /><br/>
+		Received messages:<br/>
+		<span id="received_messages"></span>
+		<script>
+			// cf. https://en.wikipedia.org/wiki/Web_Messaging#Example:
+			function receiver(event) {
+				received_messages.innerHTML += "'" + event.origin + "' sent: '" + event.data + "'<br/>"
+			}
+			window.addEventListener('message', receiver, false); //useCapture=false, see https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+		</script>
+	</body>
+</html>

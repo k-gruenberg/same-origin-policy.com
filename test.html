@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test</title>
+	</head>
+	<body>
+		<h2>A page on same-origin-policy.com</h2>
+		<p>
+			This is: <span id="window_location"></span>
+		</p>
+		<p>
+			This site contains a secret: 133713371337
+		</p>
+		<p>
+			This, however, is <b>not</b> secret: window.name = <span id="window_name"></span>
+		</p>
+		<script>
+			window_location.innerText = window.location;
+			window.name = "This is not actually a secret!"
+			window_name.innerText = window.name;
+		</script>
+	</body>
+</html>
